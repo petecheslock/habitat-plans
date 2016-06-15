@@ -1,0 +1,4 @@
+#!/bin/sh
+#
+RABBITMQ_CONF_ENV_FILE={{pkg.svc_config_path}}/rabbitmq-env.conf \
+ {{pkg.path}}/sbin/rabbitmq-server
