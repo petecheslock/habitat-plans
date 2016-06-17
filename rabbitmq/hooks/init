@@ -1,4 +1,10 @@
 #!/bin/sh
 
+for dir in ebin etc include plugins sbin share;
+  do ln -sf {{pkg.path}}/$dir {{pkg.svc_path}}/$dir;
+done
+
 mkdir -p {{pkg.svc_path}}/var/lib/rabbitmq
+mkdir -p {{pkg.svc_path}}/var/run/rabbitmq
+
 chown -R hab:hab {{pkg.svc_path}}

@@ -1,5 +1,12 @@
-#!/bin/sh
+#!/bin/bash
 #
-export RABBITMQ_CONF_ENV_FILE={{pkg.svc_config_path}}/rabbitmq-env.conf
- {{pkg.path}}/sbin/rabbitmqctl reset
- {{pkg.path}}/sbin/rabbitmq-server
+cd {{pkg.svc_path}}
+
+ulimit -a
+
+exec 2>&1
+exec /usr/bin/env \
+  HOSTNAME=localhost \
+  RABBITMQ_CONF_ENV_FILE={{pkg.svc_config_path}}/rabbitmq-env.conf \
+  HOME={{pkg.svc_path}}/var/lib/rabbitmq \
+  chpst -u hab:hab {{pkg.svc_path}}/sbin/rabbitmqctl stop && {{pkg.svc_path}}/sbin/rabbitmq-server 
