@@ -1,8 +1,12 @@
 #!/bin/bash
 #
+# cd into the package service path i.e. /hab/svc/rabbitmq
 cd {{pkg.svc_path}}
 
-ulimit -a
+# RMQ is different in that the rabbitmq-server command runs an exec
+# to start the process and it looks like habitat loses the pid
+# so lets send the "stop" command before we start
+kill -TERM `pgrep beam`
 
 exec 2>&1
 exec /usr/bin/env \
