@@ -14,8 +14,7 @@ do_build() {
 }
 
 do_install() {
-  cp -r $HAB_CACHE_SRC_PATH/${pkg_dirname}/* ${pkg_prefix}
-  #for DIR in ebin etc include plugins sbin share;
-    #do cp -r $HAB_CACHE_SRC_PATH/${pkg_dirname}/$DIR ${pkg_prefix};
-  #done
+  for DIR in ebin etc include plugins sbin share;
+    do cp -r $HAB_CACHE_SRC_PATH/${pkg_dirname}/$DIR ${pkg_prefix};
+  done
 }
