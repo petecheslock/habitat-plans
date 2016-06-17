@@ -9,4 +9,4 @@ exec /usr/bin/env \
   HOSTNAME=localhost \
   RABBITMQ_CONF_ENV_FILE={{pkg.svc_config_path}}/rabbitmq-env.conf \
   HOME={{pkg.svc_path}}/var/lib/rabbitmq \
-  chpst -u hab:hab {{pkg.svc_path}}/sbin/rabbitmqctl stop && {{pkg.svc_path}}/sbin/rabbitmq-server 
+  chpst -u hab:hab {{pkg.svc_path}}/sbin/rabbitmq-server
